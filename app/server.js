@@ -21,6 +21,7 @@ app.get('/action', (req, res) => {
 });
 
 app.post('/set-move', (req, res) => {
+  console.log(req.body);
   const { move } = req.body;
   currentMove = move;
   res.redirect('/');
