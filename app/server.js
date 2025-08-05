@@ -19,13 +19,21 @@ app.get('/action', (req, res) => {
 });
 
 app.post('/set-move', (req, res) => {
-  const { direction } = req.body;
-  const result = {
-    move: direction.toUpperCase(),
-    action: 'MOVE',
-    message: `Déplacement vers ${direction}`
-  };
-  res.json(result);
+  try {
+    const { direction } = req.body;
+    if (!direction) {
+      return res.status(400).json({ error: 'Direction manquante' });
+    }
+    const result = {
+      move: direction.toUpperCase(),
+      action: 'MOVE',
+      message: `Déplacement vers ${direction}`
+    };
+    res.json(result);
+  } catch (error) {
+    console.error('Erreur /set-move:', error);
+    res.status(500).json({ error: 'Erreur serveur' });
+  }
 });
 
 app.listen(PORT, () => {
