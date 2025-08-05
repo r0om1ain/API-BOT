@@ -13,10 +13,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend', 'navigation.html'));
 });
 
-app.get('/action', (req, res) => {
-  const result = decideAction();
-  res.json(result);
-});
+// app.get('/action', (req, res) => {
+//   const result = decideAction();
+//   res.json(result);
+// });
 
 app.post('/set-move', (req, res) => {
   try {
