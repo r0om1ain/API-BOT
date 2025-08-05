@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3001;
 const { decideAction } = require('./bot/bot');
 
 app.use(cors());
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'frontend')));
 
 app.get('/', (req, res) => {
@@ -14,6 +15,16 @@ app.get('/', (req, res) => {
 
 app.get('/action', (req, res) => {
   const result = decideAction();
+  res.json(result);
+});
+
+app.post('/set-move', (req, res) => {
+  const { direction } = req.body;
+  const result = {
+    move: direction.toUpperCase(),
+    action: 'MOVE',
+    message: `Déplacement vers ${direction}`
+  };
   res.json(result);
 });
 

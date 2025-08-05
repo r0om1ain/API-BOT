@@ -109,15 +109,21 @@
                 resultDiv.innerHTML = '<div class="loading">⏳ Navigation en cours...</div>';
                 
                 try {
-                    // Appeler l'API
-                    const response = await fetch('http://localhost:3001/action');
+                    // Appeler l'API avec la direction
+                    const response = await fetch('http://localhost:3001/set-move', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ direction })
+                    });
                     const data = await response.json();
                     
                     // Afficher le résultat
                     resultDiv.innerHTML = `
                         <div class="action-result">
-                            Direction: ${direction}<br>
-                            Action: ${data.action || 'Navigation effectuée'}
+                            ${data.message}<br>
+                            Move: ${data.move}
                         </div>
                     `;
                 } catch (error) {
