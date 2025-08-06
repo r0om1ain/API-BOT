@@ -1,7 +1,7 @@
 {
-    "name": "nestor-jorys",
+    "name": "nestor-jean-joris",
     "version": "1.0.0",
-    "description": "euh oui",
+    "description": "shirley",
     "main": "app/server.js",
     "scripts": {
         "start": "node app/server.js",
@@ -14,12 +14,13 @@
         "express",
         "docker"
     ],
-    "author": "SHDXWCORP",
+    "author": "rhume1",
     "license": "MIT",
     "dependencies": {
         "cors": "^2.8.5",
-        "express": "^4.18.2",
-        "sqlite3": "^5.1.7"
+        "express": "^4.21.2",
+        "sqlite3": "^5.1.7",
+        "supertest": "^7.1.4"
     },
     "devDependencies": {
         "jest": "^30.0.5"

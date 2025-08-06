@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const PORT = process.env.PORT || 3001;
 
 let currentMove = "STAY";
 let currentAction = "NONE";
@@ -22,7 +21,6 @@ app.get('/action', (req, res) => {
 });
 
 app.post('/set-move', (req, res) => {
-  console.log(req.body);
   const { move } = req.body;
   currentMove = move;
   res.redirect('/');
@@ -34,6 +32,4 @@ app.post('/set-action', (req, res) => {
   res.redirect('/');
 });
 
-app.listen(PORT, () => {
-  console.log(`✅ Bot actif sur http://localhost:${PORT}`);
-});
+module.exports = app;
