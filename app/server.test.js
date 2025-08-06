@@ -26,6 +26,15 @@ describe('API BOT server', () => {
     expect(res.body.action).toBe('JUMP');
   });
 
+  test('POST /set-action updates action to COLLECT', async () => {
+    await request(app)
+      .post('/set-action')
+      .send({ action: 'COLLECT' })
+      .set('Content-Type', 'application/json');
+    const res = await request(app).get('/action');
+    expect(res.body.action).toBe('COLLECT');
+  });
+
   test('POST /set-move and /set-action together', async () => {
     await request(app)
       .post('/set-move')

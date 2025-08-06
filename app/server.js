@@ -23,6 +23,9 @@ app.get('/action', (req, res) => {
 app.post('/set-move', (req, res) => {
   const { move } = req.body;
   currentMove = move;
+  if (move !== 'STAY') {
+    currentAction = 'COLLECT';
+  }
   res.redirect('/');
 });
 
