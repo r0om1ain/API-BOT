@@ -5,8 +5,8 @@ WORKDIR /app
 COPY package.json .
 RUN npm install
 
-COPY /app .
+COPY app/ .
 
 EXPOSE 3001
 
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
